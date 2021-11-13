@@ -1,0 +1,43 @@
+#!/bin/bash
+
+echo "istall cofiguration dotfiles"
+
+sudo apt update
+
+sudo apt install make -y
+
+sudo apt install rcm -y
+
+sudo apt install tmux -y
+
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+sudo apt install neovim -y
+
+sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+      https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+
+
+
+echo "install Node js v17.x"
+
+curl -fsSL https://deb.nodesource.com/setup_17.x | sudo -E bash -
+sudo apt-get install -y nodejs
+
+sudo apt install yarn -y
+
+echo "install zsh"
+
+sudo apt install zsh -y
+
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+rcup -y
+lsrc
+
+
+
