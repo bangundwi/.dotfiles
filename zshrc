@@ -1,5 +1,49 @@
- # Enable vi mode
- bindkey -M viins 'jj' vi-cmd-mode
+#===============ZPLUG===============#
+# zplug init
+export ZPLUG_HOME=$HOME/.zplug
+
+[[ ! -f $ZPLUG_HOME/init.zsh ]] && git clone https://github.com/zplug/zplug $ZPLUG_HOME
+source $ZPLUG_HOME/init.zsh
+
+# do self-manage
+zplug 'zplug/zplug', hook-build:'zplug --self-manage'
+
+# auto-close quotes and brackets
+zplug 'hlissner/zsh-autopair', defer:2, as:plugin
+zplug "lib/history",      from:oh-my-zsh
+zplug "lib/key-bindings", from:oh-my-zsh
+zplug "lib/termsupport", from:oh-my-zsh
+zplug "lib/completion", from:oh-my-zsh
+zplug "lib/theme-and-appearance", from:oh-my-zsh
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
+
+zplug "zsh-users/zsh-autosuggestions", defer:2, as:plugin
+
+zplug "zpm-zsh/ls", defer:2, as:plugin
+zplug "zpm-zsh/dircolors-material", as:plugin
+
+# finally install and load those plugins
+# Install plugins if there are plugins that have not been installed
+if ! zplug check; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
+fi
+zplug load
+
+# returning command and folder completion when line is empty
+# like a bash, but better
+blanktab() { [[ $#BUFFER == 0 ]] && CURSOR=3 zle list-choices || zle expand-or-complete }
+zle -N blanktab && bindkey '^I' blanktab
+
+#==================================#
+#=================VIM==============#
+#==================================#
+# Enable vi mode
+bindkey -M viins 'jj' vi-cmd-mode
+
+
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH

@@ -179,4 +179,12 @@ git remote set-url origin [git dengan ssh]
   helper = cache --timeout=1800
 ```
 
+# Instalasi download accelerator | axel | aria2 | ranger
+```bash
+sudo apt install axel aria2 ranger
+
+ranger
+```
+
+
 

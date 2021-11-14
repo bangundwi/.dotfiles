@@ -1,17 +1,21 @@
 #!/bin/bash
 
+
+# ============= Configuration Dotfiles ==============#
 echo "istall cofiguration dotfiles"
 
-sudo apt update
+sudo apt update -y
 
 sudo apt install make -y
 
 sudo apt install rcm -y
 
+# ============= Tmux ==============#
 sudo apt install tmux -y
 
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
+# ============= Neovim ==============#
 sudo apt install neovim -y
 
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
@@ -22,7 +26,7 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 
 
 
-
+# =============== NodeJs ==============#
 echo "install Node js v17.x"
 
 curl -fsSL https://deb.nodesource.com/setup_17.x | sudo -E bash -
@@ -30,6 +34,7 @@ sudo apt-get install -y nodejs
 
 sudo apt install yarn -y
 
+# ===========instalasi Zsh=============#
 echo "install zsh"
 
 sudo apt install zsh -y
@@ -39,5 +44,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 rcup -y
 lsrc
 
+# Instalasi download accelerator | axel | aria2 | ranger
+sudo apt install axel aria2 ranger
 
 
