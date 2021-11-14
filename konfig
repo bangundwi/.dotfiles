@@ -47,4 +47,6 @@ lsrc
 # Instalasi download accelerator | axel | aria2 | ranger
 sudo apt install axel aria2 ranger
 
+# Zplug
+curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
 
